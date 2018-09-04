@@ -61,25 +61,29 @@ public:
 		static std::vector<Iterator*> container;
 	public:
 		static void CheckForInvalid(const Node<T, Y>*const);
+		//Constructors and Destructor for class Iterator
 		Iterator();
 		Iterator(Node<T, Y>* const);
 		Iterator(const Iterator&);
 		~Iterator();
-		bool operator!=(const Node<T, Y>* const);
-		bool operator!=(const Iterator&);
+		void swap(Iterator&);
+		void advance(const unsigned int);
+		//Operators for class Iterator
 		Iterator& operator++();
 		Iterator operator++(const int);
 		bool operator==(const Iterator&);
+		bool operator!=(const Node<T, Y>* const);
+		bool operator!=(const Iterator&);
 		Node<T, Y>* operator->() const;
 		Node<T, Y>& operator*() const;
-		void swap(Iterator&);
-		void advance(const unsigned int);
 	};
+	//the Big Four
 	SingleLinkedList();
 	SingleLinkedList(const Node<T, Y>&);
 	SingleLinkedList(const SingleLinkedList&);
 	~SingleLinkedList();
 	SingleLinkedList& operator=(const SingleLinkedList&);
+	//
 	void AddNode(const T&, const Y&);
 	void AddNode(const Node<T, Y>&);
 	void DeleteNode(const T&,const Y&);
@@ -88,16 +92,6 @@ public:
 	int SearchPosNode(const Node<T, Y>&) const;
 	void DisplayAllNodes() const;
 	void Reverse();
-	//Only for int is implemented
-	void Sort();
-	bool IsEmpty() const;
-	unsigned int Size() const;
-	const Iterator begin() const;
-	const Iterator end() const;
-	const Node<T, Y>* const front() const;
-	const Node<T, Y>* const back() const;
-	void clear() noexcept;
-	SingleLinkedList<T,Y>* const merge(const SingleLinkedList&) const;
 	void splice(SingleLinkedList&);
 	void push_front(const Node<T, Y>&);
 	void push_front(const T&, const Y&);
@@ -105,6 +99,18 @@ public:
 	void push_back(const Node<T, Y>&);
 	void push_back(const T&, const Y&);
 	void pop_back();
+	const Node<T, Y>* const front() const;
+	const Node<T, Y>* const back() const;
+	void clear() noexcept;
+	SingleLinkedList<T,Y>* const merge(const SingleLinkedList&) const;
+	void splice(SingleLinkedList&);
+	//Only when key is unsigned int for now
+	void Sort();
+	bool IsEmpty() const;
+	unsigned int Size() const;
+	//fuctions for operating with iterators
+	const Iterator begin() const;
+	const Iterator end() const;
 };
 template<typename T,typename Y>
 void swap(const typename SingleLinkedList<T, Y>::Iterator& iter1,const typename SingleLinkedList<T, Y>::Iterator& iter2)
@@ -180,7 +186,6 @@ inline void SingleLinkedList<T,Y>::DeleteList()
 	}
 }
 //The invalid iterators will be pointing to nullptr
-//might be a problem that .end() is an iterator which points to nullptr
 template<typename T,typename Y>
 inline void SingleLinkedList<T,Y>::Iterator::CheckForInvalid(const Node<T, Y>* const toDel)
 {
@@ -418,11 +423,13 @@ inline void SingleLinkedList<T,Y>::Reverse()
 	}
 	Start = temp2;
 }
-
+//For every type of KEY the fuction will be partially specialized
 template<typename T,typename Y>
 inline Node<T, Y>* RadixSort(Node<T, Y>* const start)
-{//	return start;
+{
+	return start;
 }
+//Help functions for RadixSort
 int digit(const int dig, const int k)
 {
 	int digit = 0;
@@ -457,7 +464,7 @@ int largeDigit(Node<T, unsigned int>* const start)
 	}
 	return counter;
 }
-
+//
 template<typename T>
 inline Node<T, unsigned int>* RadixSort(Node<T, unsigned int>* const start)
 {
@@ -556,6 +563,7 @@ inline const Node<T, Y>* const SingleLinkedList<T, Y>::back() const
 	}
 	return temp;
 }
+//This function deletes the LinkedList
 template<typename T,typename Y>
 inline void SingleLinkedList<T, Y>::clear() noexcept
 {
@@ -563,6 +571,7 @@ inline void SingleLinkedList<T, Y>::clear() noexcept
 	Start = nullptr;
 	size = 0;
 }
+//Constructors for class Iterator
 template<typename T, typename Y>
 inline SingleLinkedList<T, Y>::Iterator::Iterator()
 {
@@ -581,6 +590,7 @@ inline SingleLinkedList<T, Y>::Iterator::Iterator(const typename SingleLinkedLis
 	curr = A.curr;
 	container.push_back(this);
 }
+//Destructor for class Iterator
 template<typename T,typename Y>
 inline SingleLinkedList<T, Y>::Iterator::~Iterator()
 {
@@ -593,6 +603,7 @@ inline SingleLinkedList<T, Y>::Iterator::~Iterator()
 		}
 	}
 }
+
 template<typename T, typename Y>
 inline typename SingleLinkedList<T, Y>::Iterator& SingleLinkedList<T, Y>::Iterator::operator++()
 {
@@ -611,7 +622,7 @@ inline typename SingleLinkedList<T, Y>::Iterator& SingleLinkedList<T, Y>::Iterat
 	curr = curr->next;
 	return *this;
 }
-
+//overloading operators for class Iterator
 template<typename T, typename Y>
 inline typename SingleLinkedList<T, Y>::Iterator SingleLinkedList<T, Y>::Iterator::operator++(const int)
 {
