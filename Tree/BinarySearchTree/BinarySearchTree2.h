@@ -52,7 +52,7 @@ private:
 	//help function for getting the Height of a Node or a Tree
 
 	unsigned int GetHeightOfRoot(const Node<T>* const , const unsigned int) const;
-	int GetHeight(const Node<T>* const ,const T&,const int, const unsigned int) const;
+	unsigned int GetHeight(const Node<T>* const ,const T&,const int, const unsigned int) const;
 
 	//help recursive function for balancing the tree
 
