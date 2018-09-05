@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <exception>
-#include <string>
 //
 //The class Iterator isnt fully implemented, because of the implementation of class CircularDoubleLinkedList
 //for iteration with the Iterators thorugh a loop users should use only <= and >= , otherwise it wont work
