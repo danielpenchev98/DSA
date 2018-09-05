@@ -97,8 +97,8 @@ public:
 	T& minData();
 	const T& minData() const;
 	unsigned int GetHeightOfSubTree(const Node<T>* const) const;
-	int GetHeightOfNode(const Node<T>* const) const;
-	int GetHeightOfNode(const T&, const int) const;
+	unsigned int GetHeightOfNode(const Node<T>* const) const;
+	unsigned int GetHeightOfNode(const T&, const int) const;
 	int GetBalance(const Node<T>* const) const;
 
 	//Function for balancing the binary search tree
@@ -669,7 +669,7 @@ inline unsigned int BinarySearchTree2<T>::GetHeightOfRoot(const Node<T>* const n
 }
 
 template<typename T>
-inline int BinarySearchTree2<T>::GetHeightOfNode(const Node<T>* const toSearch) const
+inline unsigned int BinarySearchTree2<T>::GetHeightOfNode(const Node<T>* const toSearch) const
 {
 	if (toSearch == nullptr)
 	{
@@ -678,12 +678,12 @@ inline int BinarySearchTree2<T>::GetHeightOfNode(const Node<T>* const toSearch) 
 	return GetHeight(root, toSearch->data,toSearch->key, 1);
 }
 template<typename T>
-inline int BinarySearchTree2<T>::GetHeightOfNode(const T&DATA, const int KEY) const
+inline unsigned int BinarySearchTree2<T>::GetHeightOfNode(const T&DATA, const int KEY) const
 {
 	return GetHeight(root, DATA, KEY, 1);
 }
 template<typename T>
-inline int BinarySearchTree2<T>::GetHeight(const Node<T>* const curr, const T& DATA,const int KEY, const unsigned int counter) const
+inline unsigned int BinarySearchTree2<T>::GetHeight(const Node<T>* const curr, const T& DATA,const int KEY, const unsigned int counter) const
 {
 	if (curr == nullptr)
 	{
