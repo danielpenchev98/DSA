@@ -1,0 +1,7 @@
+Description of CircularDoubleLinkedList :
+- Implemented with struct Node
+- Every Node has pointer to the next and the previous Node
+- last element is connected to the initial element via pointer next
+- initial element is connected to last element via pointer prev
+- This implementation doesnt include Sentinel Nodes
+- custom class Iterator is not fully implemented due to implementation complications
