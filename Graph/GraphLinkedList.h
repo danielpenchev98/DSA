@@ -212,18 +212,18 @@ void GraphLinkedList<T>::AddEdge(const std::string& from, const std::string& to,
 {
 	int pos1 = -1;
 	int pos2 = -1;
-	if (from == to)
-	{
-		std::cout << "cannot add edge" << std::endl;
-		return;
-	}
+//	if (from == to) if the user wants the exclude edges from A to A
+//	{
+//		std::cout << "cannot add edge" << std::endl;
+//		return;
+//	}
 	for (int i = 0; i < size; i++)
 	{
 		if (from == vertex[i].name)
 		{
 			pos1 = i;
 		}
-		else if (to == vertex[i].name)
+		/*else*/ if (to == vertex[i].name)
 		{
 			pos2 = i;
 		}
@@ -259,7 +259,7 @@ void GraphLinkedList<T>::AddEdge(const std::string& from, const std::string& to,
 template<typename T>
 void GraphLinkedList<T>::DeleteEdge(const std::string&A, const std::string&B)
 {
-	if (vertex == nullptr || A == B)
+	if (vertex == nullptr /*|| A == B*/)
 	{
 		return;
 	}
@@ -271,7 +271,7 @@ void GraphLinkedList<T>::DeleteEdge(const std::string&A, const std::string&B)
 		{
 			pos1 = i;
 		}
-		else if (B == vertex[i].name)
+		/*else*/ if (B == vertex[i].name)
 		{
 			pos2 = i;
 		}
