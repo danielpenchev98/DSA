@@ -51,7 +51,7 @@ public:
 	void BreadthFirstSearch(const std::string&) const;
 	void DepthFirstSearch(const std::string&) const;
 
-	//Algorithms to Add
+	//Algorithms to Add - not possible because this is implementation of directed graph
 	//Djikstra
 	//Kruskal
 	//Prim
