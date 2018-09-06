@@ -18,7 +18,7 @@ struct Edge
    Edge<T>* next;
    int weight;
 };
-//To CHOOSE TO BE Determined Graph or not IMPORTANT
+//Note this implementation of graph doesnt exclude loops
 template<typename T>
 class GraphLinkedList
 {
