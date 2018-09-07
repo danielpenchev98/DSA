@@ -637,6 +637,9 @@ int GraphLinkedList<T>::Djiikstra(const std::string& from, const std::string& to
 			start = i;
 		}
 	}
+	if(start==-1)
+	{ return -1;
+	}
 	Edge<T>* curr = vertex[start].start;
 	bool* alreadyDeterm = new bool[size];
 	for (int i = 0; i < size; i++)
