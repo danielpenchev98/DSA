@@ -750,7 +750,6 @@ int GraphLinkedList<T>::Djiikstra(const std::string& from, const std::string& to
 		{
 			int minWeight = table[start];
 			delete[] table;
-			//delete[] alreadyDeterm;
 			return minWeight;
 		}
 		curr = vertex[start].start;
@@ -768,7 +767,6 @@ int GraphLinkedList<T>::Djiikstra(const std::string& from, const std::string& to
 		}
 	}
 	delete[] table;
-	//delete[] alreadyDeterm;
 	return -1;
 }
 */
