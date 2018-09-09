@@ -49,7 +49,7 @@ private:
 	Node<T>* RightRotation(Node<T>*);
 	Node<T>* LeftRotation(Node<T>*);
 
-	//help function for getting the Height of a Node or a Tree
+	//help function for getting the Height or the Level of a Node or a Tree
 
 	unsigned int GetHeightOfRoot(const Node<T>* const , const unsigned int) const;
 	unsigned int GetLevel(const Node<T>* const ,const T&,const int, const unsigned int) const;
