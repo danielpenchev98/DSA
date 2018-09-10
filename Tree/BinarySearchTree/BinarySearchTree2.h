@@ -439,7 +439,7 @@ inline Node<T>* BinarySearchTree2<T>::RightRotation(Node<T>* node)
 	node->parent = B;
 	if (Subroot != nullptr)
 	{
-		Subroot->left == node ? Subroot->left = node : Subroot->right = node;
+		Subroot->left == node ? Subroot->left = B : Subroot->right = B;
 	}
 	else
 	{
