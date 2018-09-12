@@ -1,8 +1,8 @@
 # DSA
 Data Structures and Algorithms
 content of rep:
-- LinkedList
-- Binary Search Tree
-- Graph
+- LinkedLists
+- Trees
+- Graphs
 - Sorting Algorithms
 - Searching Algorithms
