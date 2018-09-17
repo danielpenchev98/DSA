@@ -1060,6 +1060,7 @@ inline void CircularDoubleLinkedList<T, Y>::ChangeKey(const Y&KEY, const Y&NEWKE
 			std::cout << "Cannot assign the new key" << std::endl;
 			return;
 		}
+		curr=curr->next;
 	}
 	Node<T, Y>* toDel = nullptr;
 	curr = last->next;
