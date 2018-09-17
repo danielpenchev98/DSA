@@ -2,6 +2,7 @@
 #include <vector>
 #include <exception>
 //problem with begin() and end()
+//how to get the keys? - through the iterators
 template<typename T, typename Y>
 struct Node
 {
