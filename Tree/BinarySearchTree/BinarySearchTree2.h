@@ -1,5 +1,7 @@
 #pragma once
 template<typename T>
+//problem when the user changes the value of node's key currently in the tree
+//Solution to have specific function for changing the key and the pointers returned form the functions to be const
 struct Node
 {
 	Node* left;
