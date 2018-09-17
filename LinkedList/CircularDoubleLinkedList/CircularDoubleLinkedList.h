@@ -79,7 +79,6 @@ public:
 	void DeleteNode(const Node<T, Y>&);
 	int SearchPosNode(const T&, const Y&) const;
 	int SearchPosNode(const Node<T, Y>&) const;
-	T& At(const Y&);
 	const T& At(const Y&) const;
 	void ReverseList();
 	void Display() const;
@@ -343,11 +342,6 @@ inline const T& CircularDoubleLinkedList<T, Y>::At(const Y&KEY) const
 		}
 	}
 
-}
-template<typename T,typename Y>
-inline T& CircularDoubleLinkedList<T, Y>::At(const Y&KEY)
-{
-	return const_cast<T&>(static_cast<const CircularDoubleLinkedList<T, Y>&>(*this).At(KEY));
 }
 template<typename T, typename Y>
 void CircularDoubleLinkedList<T, Y>::ReverseList()
