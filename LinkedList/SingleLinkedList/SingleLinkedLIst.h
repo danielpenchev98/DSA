@@ -90,6 +90,7 @@ public:
 	void DeleteNode(const Node<T, Y>&);
 	int SearchPosNode(const T&, const Y&) const;
 	int SearchPosNode(const Node<T, Y>&) const;
+	const T& At(const Y&) const;
 	void DisplayAllNodes() const;
 	void Reverse();
 	void splice(SingleLinkedList&);
@@ -384,6 +385,18 @@ template<typename T, typename Y>
 inline int SingleLinkedList<T, Y>::SearchPosNode(const Node<T, Y>&A) const
 {
 	return SearchPosNode(A.data, A.key;)
+}
+template<typename T,typename Y>
+inline const T& SingleLinkedList<T,Y>::At(const Y&KEY) const
+{
+	Iterator iter=begin();
+	for(;iter<=end();++iter)
+	{
+		if(iter->key==KEY)
+		{
+			return iter->data;
+		}
+	}
 }
 template<typename T, typename Y>
 inline void SingleLinkedList<T,Y>::DisplayAllNodes() const
