@@ -42,21 +42,21 @@ public:
 		~Iterator();
 
 		//Operators
-		bool operator!=(const Node<T, Y>* const);
-		bool operator!=(const Iterator&);
+		bool operator!=(const Node<T, Y>* const) const;
+		bool operator!=(const Iterator&) const;
 		//used for iterating ++ only
-		bool operator<=(const Iterator&);
+		bool operator<=(const Iterator&) const;
 		//used for iterating -- only
-		bool operator>=(const Iterator&);
+		bool operator>=(const Iterator&) const;
 		Iterator& operator +=(const int);
-		Iterator operator+(const int);
+		Iterator operator+(const int) const;
 		Iterator& operator -=(const int);
-		Iterator operator -(const int);
+		Iterator operator -(const int) const;
 		Iterator& operator++();
 		Iterator operator++(const int);
 		Iterator& operator--();
 		Iterator operator--(const int);
-		bool operator==(const Iterator&);
+		bool operator==(const Iterator&) const;
 		Node<T, Y>* operator->() const;
 		Node<T, Y>& operator*() const;
 
@@ -856,23 +856,23 @@ inline typename CircularDoubleLinkedList<T, Y>::Iterator& CircularDoubleLinkedLi
 	return *this;
 }
 template<typename T, typename Y>
-inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator!=(const Node<T, Y>* const toCompare)
+inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator!=(const Node<T, Y>* const toCompare) const
 {
 	return !(this->curr == toCompare);
 }
 template<typename T, typename Y>
-inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator!=(const typename CircularDoubleLinkedList<T, Y>::Iterator& toCompare)
+inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator!=(const typename CircularDoubleLinkedList<T, Y>::Iterator& toCompare) const
 {
 	return !(curr == toCompare.curr);
 }
 template<typename T, typename Y>
-inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator<=(const typename CircularDoubleLinkedList<T, Y>::Iterator&A)
+inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator<=(const typename CircularDoubleLinkedList<T, Y>::Iterator&A) const
 {
 	if (iteratedFrom == nullptr) return 1;
 	return !(iteratedFrom->key == A->key);
 }
 template<typename T, typename Y>
-inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator>=(const typename CircularDoubleLinkedList<T, Y>::Iterator&A)
+inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator>=(const typename CircularDoubleLinkedList<T, Y>::Iterator&A) const
 {
 	if (iteratedFrom == nullptr) return 1;
 	return !(iteratedFrom->key == A->key);
@@ -885,7 +885,7 @@ inline typename CircularDoubleLinkedList<T, Y>::Iterator& CircularDoubleLinkedLi
 	swap(temp);
 }
 template<typename T, typename Y>
-inline typename CircularDoubleLinkedList<T, Y>::Iterator CircularDoubleLinkedList<T, Y>::Iterator::operator+(const int progress)
+inline typename CircularDoubleLinkedList<T, Y>::Iterator CircularDoubleLinkedList<T, Y>::Iterator::operator+(const int progress) const
 {
 	Iterator temp(*this);
 	temp.advance(progress);
@@ -899,7 +899,7 @@ inline typename CircularDoubleLinkedList<T, Y>::Iterator& CircularDoubleLinkedLi
 	swap(temp);
 }
 template<typename T, typename Y>
-inline typename CircularDoubleLinkedList<T, Y>::Iterator CircularDoubleLinkedList<T, Y>::Iterator::operator -(const int progress)
+inline typename CircularDoubleLinkedList<T, Y>::Iterator CircularDoubleLinkedList<T, Y>::Iterator::operator -(const int progress) const
 {
 	Iterator temp(*this);
 	temp.advance(-progress);
@@ -958,7 +958,7 @@ inline typename CircularDoubleLinkedList<T, Y>::Iterator CircularDoubleLinkedLis
 	return temp;
 }
 template<typename T, typename Y>
-inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator==(const typename CircularDoubleLinkedList<T, Y>::Iterator&A)
+inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator==(const typename CircularDoubleLinkedList<T, Y>::Iterator&A) const
 {
 	return this->curr == A.curr;
 }
