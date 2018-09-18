@@ -63,7 +63,7 @@ public:
 		static void CheckForInvalid(const Node<T, Y>*const);
 		Iterator();
 		Iterator(Node<T, Y>* const);
-		//there isnt overload of operator =,because the iterator is already listed in the container of iterators
+		//there isnt overload of operator = because the iterator is already listed in the container of iterators
 		Iterator(const Iterator&);
 		~Iterator();
 		bool operator!=(const Node<T, Y>* const) const;
