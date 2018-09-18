@@ -65,11 +65,11 @@ public:
 		Iterator(Node<T, Y>* const);
 		Iterator(const Iterator&);
 		~Iterator();
-		bool operator!=(const Node<T, Y>* const);
-		bool operator!=(const Iterator&);
+		bool operator!=(const Node<T, Y>* const) const;
+		bool operator!=(const Iterator&) const;
 		Iterator& operator++();
 		Iterator operator++(const int);
-		bool operator==(const Iterator&);
+		bool operator==(const Iterator&) const;
 		Node<T, Y>* operator->() const;
 		Node<T, Y>& operator*() const;
 		void swap(Iterator&);
@@ -632,7 +632,7 @@ inline typename SingleLinkedList<T, Y>::Iterator SingleLinkedList<T, Y>::Iterato
 	return temp;
 }
 template<typename T, typename Y>
-inline bool SingleLinkedList<T, Y>::Iterator::operator==(const typename SingleLinkedList<T, Y>::Iterator&A)
+inline bool SingleLinkedList<T, Y>::Iterator::operator==(const typename SingleLinkedList<T, Y>::Iterator&A) const
 {
 	return (curr == A.curr)
 }
@@ -671,12 +671,12 @@ inline Node<T, Y>& SingleLinkedList<T, Y>::Iterator::operator*() const
 	return *curr;
 }
 template<typename T, typename Y>
-inline bool SingleLinkedList<T, Y>::Iterator::operator!=(const Node<T, Y>* const toCheck)
+inline bool SingleLinkedList<T, Y>::Iterator::operator!=(const Node<T, Y>* const toCheck) const
 {
 	return !(curr == toCheck);
 }
 template<typename T, typename Y>
-inline bool SingleLinkedList<T, Y>::Iterator::operator!=(const typename SingleLinkedList<T, Y>::Iterator&A)
+inline bool SingleLinkedList<T, Y>::Iterator::operator!=(const typename SingleLinkedList<T, Y>::Iterator&A) const
 {
 	return !(curr == A.curr);
 }
