@@ -44,6 +44,7 @@ public:
 		//Operators
 		bool operator!=(const Node<T, Y>* const) const;
 		bool operator!=(const Iterator&) const;
+		//To implement somewhen the operators < and > 
 		//used for iterating ++ only
 		bool operator<=(const Iterator&) const;
 		//used for iterating -- only
@@ -57,8 +58,10 @@ public:
 		Iterator& operator--();
 		Iterator operator--(const int);
 		bool operator==(const Iterator&) const;
-		Node<T, Y>* operator->() const;
-		Node<T, Y>& operator*() const;
+		const Node<T, Y>* operator->() const;
+		Node<T,Y>* operator->();
+		const Node<T, Y>& operator*() const;
+		Node<T,Y>& operator*();
 
 		//helping functions
 		void swap(Iterator&);
@@ -963,7 +966,7 @@ inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator==(const typename 
 	return this->curr == A.curr;
 }
 template<typename T, typename Y>
-inline Node<T, Y>* CircularDoubleLinkedList<T, Y>::Iterator::operator->() const
+inline const Node<T, Y>*const CircularDoubleLinkedList<T, Y>::Iterator::operator->() const
 {
 	try
 	{
@@ -978,6 +981,33 @@ inline Node<T, Y>* CircularDoubleLinkedList<T, Y>::Iterator::operator->() const
 		exit(1);
 	}
 	return curr;
+}
+template<typename T,typename Y>
+inline Node<T, Y>* CircularDoubleLinkedList<T, Y>::Iterator::operator->()
+{
+	return const_cast<Node<T, Y>*>(static_cast<const typename CircularDoubleLinkedList<T, Y>::Iterator&>(*this).operator->());
+}
+template<typename T, typename Y>
+inline const Node<T, Y>& CircularDoubleLinkedList<T, Y>::Iterator::operator*() const
+{
+	try
+	{
+		if (curr == nullptr)
+		{
+			throw std::out_of_range("The object is nullptr");
+		}
+	}
+	catch (const std::out_of_range& err)
+	{
+		std::cout << err.what() << std::endl;
+		exit(1);
+	}
+	return *curr;
+}
+template<typename T, typename Y>
+inline Node<T, Y>& CircularDoubleLinkedList<T, Y>::Iterator::operator*()
+{
+	return const_cast<Node<T, Y>&>(static_cast<const typename CircularDoubleLinkedList<T, Y>::Iterator&>(*this).operator*());
 }
 template<typename T, typename Y>
 inline Node<T, Y>& CircularDoubleLinkedList<T, Y>::Iterator::operator*() const
