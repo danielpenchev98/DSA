@@ -70,6 +70,8 @@ public:
 		bool operator!=(const Iterator&) const;
 		Iterator& operator++();
 		Iterator operator++(const int);
+		Iterator operator+(const unsigned int) const;
+		Iterator& operator+=(const unsigned int);
 		bool operator==(const Iterator&) const;
 		Node<T, Y>* operator->() const;
 		Node<T, Y>& operator*() const;
@@ -631,6 +633,21 @@ inline typename SingleLinkedList<T, Y>::Iterator SingleLinkedList<T, Y>::Iterato
 	Iterator temp(*this);
 	++(*this);
 	return temp;
+}
+template<typename T,typename Y>
+inline typename SingleLinkedList<T, Y>::Iterator SingleLinkedList<T,Y>::Iterator::operator+(const unsigned int adv) const
+{
+	Iterator temp(*this);
+	temp.advance(adv);
+	return adv;
+}
+template<typename T,typename Y>
+inline typename SingleLinkedList<T, Y>::Iterator& SingleLinkedList<T, Y>::Iterator::operator+=(const unsigned int adv)
+{
+	//copy-swap strategy - if an exception is thrown *this wont be harmed
+	Iterator temp = this->operator+(adv);
+	this->swap(temp);
+	return *this;
 }
 template<typename T, typename Y>
 inline bool SingleLinkedList<T, Y>::Iterator::operator==(const typename SingleLinkedList<T, Y>::Iterator&A) const
