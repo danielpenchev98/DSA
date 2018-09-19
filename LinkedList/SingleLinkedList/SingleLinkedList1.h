@@ -75,7 +75,9 @@ public:
 		bool operator<=(const Iterator&) const;
 		bool operator==(const Iterator&) const;
 		Node<T, Y>* operator->();
+		const Node<T,Y>* const operator->() const;
 		Node<T, Y>& operator*();
+		const Node<T,Y>& operator*() const;
 		void swap(Iterator&);
 		void advance(const unsigned int);
 	};
@@ -676,8 +678,8 @@ inline bool SingleLinkedList<T, Y>::Iterator::operator==(const typename SingleLi
 {
 	return (curr == A.curr);
 }
-template<typename T, typename Y>
-inline Node<T, Y>*  SingleLinkedList<T, Y>::Iterator::operator->()
+template<typename T,typename Y>
+inline const Node<T, Y>* const SingleLinkedList<T, Y>::Iterator::operator->() const
 {
 	try
 	{
@@ -694,7 +696,12 @@ inline Node<T, Y>*  SingleLinkedList<T, Y>::Iterator::operator->()
 	return curr;
 }
 template<typename T, typename Y>
-inline Node<T, Y>& SingleLinkedList<T, Y>::Iterator::operator*()
+inline Node<T, Y>*  SingleLinkedList<T, Y>::Iterator::operator->() 
+{
+	return const_cast<Node<T, Y>*>(static_cast<const typename SingleLinkedList<T, Y>::Iterator&>(*this).operator->());
+}
+template<typename T, typename Y>
+inline const Node<T, Y>& SingleLinkedList<T, Y>::Iterator::operator*() const
 {
 	try {
 		if (this->curr == nullptr)
@@ -709,6 +716,11 @@ inline Node<T, Y>& SingleLinkedList<T, Y>::Iterator::operator*()
 		exit(1);
 	}
 	return *curr;
+}
+template<typename T, typename Y>
+inline Node<T, Y>& SingleLinkedList<T, Y>::Iterator::operator*()
+{
+	return const_cast<Node<T, Y>&>(static_cast<const typename SingleLinkedList<T, Y>::Iterator&>(*this).operator*());
 }
 template<typename T, typename Y>
 inline bool SingleLinkedList<T, Y>::Iterator::operator!=(const Node<T, Y>* const toCheck) const
