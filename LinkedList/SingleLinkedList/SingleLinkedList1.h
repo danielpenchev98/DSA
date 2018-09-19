@@ -71,6 +71,8 @@ public:
 		Iterator operator++(const int);
 		Iterator operator+(const unsigned int) const;
 		Iterator& operator+=(const unsigned int);
+		bool operator<(const Iterator&) const;
+		bool operator<=(const Iterator&) const;
 		bool operator==(const Iterator&) const;
 		Node<T, Y>* operator->() const;
 		Node<T, Y>& operator*() const;
@@ -648,6 +650,34 @@ inline typename SingleLinkedList<T, Y>::Iterator& SingleLinkedList<T, Y>::Iterat
 	this->swap(temp);
 	return *this;
 }
+template<typename T,typename Y>
+inline bool SingleLinkedList<T, Y>::Iterator::operator<(const typename SingleLinkedList<T, Y>::Iterator&A) const
+{
+	Iterator temp(*this);
+	while (temp->curr != nullptr)
+	{
+		++temp;
+		if (temp == A)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+template<typename T,typename Y>
+inline bool SingleLinkedList<T, Y>::Iterator::operator<=(const typename SingleLinkedList<T, Y>::Iterator&A) const
+{
+	Iterator temp(*this);
+	while (temp->curr != nullptr)
+	{
+		if (temp == A)
+		{
+			return 1;
+		}
+		++temp;
+	}
+	return 0;
+}
 template<typename T, typename Y>
 inline bool SingleLinkedList<T, Y>::Iterator::operator==(const typename SingleLinkedList<T, Y>::Iterator&A) const
 {
@@ -827,6 +857,7 @@ inline SingleLinkedList<T, Y>* const merge(const SingleLinkedList<T, Y>&A, const
 {
 	return A.merge(B);
 }
+//Adding all the Nodes from the A's list to *this's list and deleting A
 template<typename T, typename Y>
 inline void SingleLinkedList<T, Y>::splice(SingleLinkedList<T, Y>&A)
 {
@@ -928,6 +959,7 @@ inline void SingleLinkedList<T, Y>::pop_back()
 	delete toDel;
 	size--;
 }
+//Special Function for changing the Node's const KEY
 template<typename T, typename Y>
 inline void SingleLinkedList<T, Y>::ChangeKey(const Y&KEY, const Y&NEWKEY)
 {
