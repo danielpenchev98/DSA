@@ -668,15 +668,8 @@ template<typename T,typename Y>
 inline bool SingleLinkedList<T, Y>::Iterator::operator<=(const typename SingleLinkedList<T, Y>::Iterator&A) const
 {
 	Iterator temp(*this);
-	while (temp.curr != nullptr)
-	{
-		if (temp == A)
-		{
-			return 1;
-		}
-		++temp;
-	}
-	return 0;
+	if (temp.curr==A.curr) return 1;
+	return this->operator<(A);
 }
 template<typename T, typename Y>
 inline bool SingleLinkedList<T, Y>::Iterator::operator==(const typename SingleLinkedList<T, Y>::Iterator&A) const
