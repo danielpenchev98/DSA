@@ -74,8 +74,8 @@ public:
 		bool operator<(const Iterator&) const;
 		bool operator<=(const Iterator&) const;
 		bool operator==(const Iterator&) const;
-		Node<T, Y>* operator->() const;
-		Node<T, Y>& operator*() const;
+		Node<T, Y>* operator->();
+		Node<T, Y>& operator*();
 		void swap(Iterator&);
 		void advance(const unsigned int);
 	};
@@ -677,7 +677,7 @@ inline bool SingleLinkedList<T, Y>::Iterator::operator==(const typename SingleLi
 	return (curr == A.curr);
 }
 template<typename T, typename Y>
-inline Node<T, Y>*  SingleLinkedList<T, Y>::Iterator::operator->() const
+inline Node<T, Y>*  SingleLinkedList<T, Y>::Iterator::operator->()
 {
 	try
 	{
@@ -694,7 +694,7 @@ inline Node<T, Y>*  SingleLinkedList<T, Y>::Iterator::operator->() const
 	return curr;
 }
 template<typename T, typename Y>
-inline Node<T, Y>& SingleLinkedList<T, Y>::Iterator::operator*() const
+inline Node<T, Y>& SingleLinkedList<T, Y>::Iterator::operator*()
 {
 	try {
 		if (this->curr == nullptr)
