@@ -1,7 +1,6 @@
 #pragma once
 #include <exception>
 #include <vector>
-//Problem when changing the key through Iterators
 template<typename T, typename Y>
 struct Node
 {
