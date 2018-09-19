@@ -58,9 +58,10 @@ public:
 		Iterator& operator--();
 		Iterator operator--(const int);
 		bool operator==(const Iterator&) const;
-		const Node<T, Y>* operator->() const;
+		//need further research for operators ->() const and *() const
+		//const Node<T, Y>* operator->() const;
 		Node<T,Y>* operator->();
-		const Node<T, Y>& operator*() const;
+		//const Node<T, Y>& operator*() const;
 		Node<T,Y>& operator*();
 
 		//helping functions
@@ -965,6 +966,7 @@ inline bool CircularDoubleLinkedList<T, Y>::Iterator::operator==(const typename 
 {
 	return this->curr == A.curr;
 }
+/*
 template<typename T, typename Y>
 inline const Node<T, Y>*const CircularDoubleLinkedList<T, Y>::Iterator::operator->() const
 {
@@ -982,11 +984,26 @@ inline const Node<T, Y>*const CircularDoubleLinkedList<T, Y>::Iterator::operator
 	}
 	return curr;
 }
+*/
 template<typename T,typename Y>
 inline Node<T, Y>* CircularDoubleLinkedList<T, Y>::Iterator::operator->()
 {
-	return const_cast<Node<T, Y>*>(static_cast<const typename CircularDoubleLinkedList<T, Y>::Iterator&>(*this).operator->());
+	try
+	{
+		if (curr == nullptr)
+		{
+			throw std::out_of_range("The object is nullptr");
+		}
+	}
+	catch (const std::out_of_range& err)
+	{
+		std::cout << err.what() << std::endl;
+		exit(1);
+	}
+	return curr;
+//	return const_cast<Node<T, Y>*>(static_cast<const typename CircularDoubleLinkedList<T, Y>::Iterator&>(*this).operator->());
 }
+/*
 template<typename T, typename Y>
 inline const Node<T, Y>& CircularDoubleLinkedList<T, Y>::Iterator::operator*() const
 {
@@ -1004,13 +1021,9 @@ inline const Node<T, Y>& CircularDoubleLinkedList<T, Y>::Iterator::operator*() c
 	}
 	return *curr;
 }
+*/
 template<typename T, typename Y>
 inline Node<T, Y>& CircularDoubleLinkedList<T, Y>::Iterator::operator*()
-{
-	return const_cast<Node<T, Y>&>(static_cast<const typename CircularDoubleLinkedList<T, Y>::Iterator&>(*this).operator*());
-}
-template<typename T, typename Y>
-inline Node<T, Y>& CircularDoubleLinkedList<T, Y>::Iterator::operator*() const
 {
 	try
 	{
@@ -1025,6 +1038,7 @@ inline Node<T, Y>& CircularDoubleLinkedList<T, Y>::Iterator::operator*() const
 		exit(1);
 	}
 	return *curr;
+	//return const_cast<Node<T, Y>&>(static_cast<const typename CircularDoubleLinkedList<T, Y>::Iterator&>(*this).operator*());
 }
 template<typename T, typename Y>
 inline void CircularDoubleLinkedList<T, Y>::Iterator::swap(typename CircularDoubleLinkedList<T, Y>::Iterator&A)
