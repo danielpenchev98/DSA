@@ -668,7 +668,7 @@ template<typename T,typename Y>
 inline bool SingleLinkedList<T, Y>::Iterator::operator<=(const typename SingleLinkedList<T, Y>::Iterator&A) const
 {
 	Iterator temp(*this);
-	while (temp->curr != nullptr)
+	while (temp.curr != nullptr)
 	{
 		if (temp == A)
 		{
@@ -681,7 +681,7 @@ inline bool SingleLinkedList<T, Y>::Iterator::operator<=(const typename SingleLi
 template<typename T, typename Y>
 inline bool SingleLinkedList<T, Y>::Iterator::operator==(const typename SingleLinkedList<T, Y>::Iterator&A) const
 {
-	return (curr == A.curr)
+	return (curr == A.curr);
 }
 template<typename T, typename Y>
 inline Node<T, Y>*  SingleLinkedList<T, Y>::Iterator::operator->() const
