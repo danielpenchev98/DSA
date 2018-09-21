@@ -34,7 +34,7 @@ private:
 	void grow();
 	void CopyGraph(const GraphLinkedList&);
 	void DeleteGraph();
-	void CopyLinkedList(Edge<T>*&,Edge<T>*&);
+	void CopyLinkedList(Edge<T>*&,const Edge<T>*);
 	bool CheckForInComingEdges(const std::string&) const;
 public:
 	GraphLinkedList(const int = 3);
@@ -124,7 +124,7 @@ inline void GraphLinkedList<T>::CopyGraph(const GraphLinkedList<T>&A)
 	}
 }
 template<typename T>
-inline void GraphLinkedList<T>::CopyLinkedList(Edge<T>*& curr, Edge<T>*& copy)
+inline void GraphLinkedList<T>::CopyLinkedList(Edge<T>*& curr,const Edge<T>* copy)
 {
 	if (copy == nullptr)
 	{
