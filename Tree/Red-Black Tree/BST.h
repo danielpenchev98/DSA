@@ -21,7 +21,7 @@ private:
 	//help functions - Big 4
 
 	void CopyTree(const BinarySearchTree2&);
-	void CopyNode(const Node<T>*const, Node<T>*&, Node<T>*&);
+	void CopyNode(Node<T>*const, Node<T>*&,const Node<T>* const);
 	void DeleteTree();
 	void DeleteSubTree(Node<T>* const);
 	//void FindNodeAndParent(const int, Node<T>*&, Node<T>*&)const;
@@ -164,7 +164,7 @@ inline void BinarySearchTree2<T>::CopyTree(const BinarySearchTree2<T>&A)
 	}
 }
 template<typename T>
-inline void BinarySearchTree2<T>::CopyNode(const Node<T>* const par, Node<T>*& curr, Node<T>*& toCopy)
+inline void BinarySearchTree2<T>::CopyNode(Node<T>* const par, Node<T>*& curr,const Node<T>*const toCopy)
 {
 	if (toCopy == nullptr)
 	{
