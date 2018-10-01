@@ -689,11 +689,11 @@ inline void BinarySearchTree2<T>::Balancer(Node<T>*curr)
 		return;
 	}
 	Node<T>* temp = nullptr;
-	//left rotation
+	//right rotataion
 	if (GetBalance(curr) > 1)
 	{
-		//right rotation
-		if (GetBalance(curr->left) <=-1)
+		//left rotation
+		if (GetBalance(curr->left) <= -1)
 		{
 			temp = LeftRotation(curr->left);
 			Balancer(temp);
@@ -702,13 +702,13 @@ inline void BinarySearchTree2<T>::Balancer(Node<T>*curr)
 		temp = RightRotation(curr);
 		Balancer(temp);
 	}
-	//right rotataion
+	//left rotation
 	else if (GetBalance(curr) < -1)
 	{
-		//left rotation
+		//right rotation
 		if (GetBalance(curr->right) >= 1)
 		{
-			temp = LeftRotation(curr->right);
+			temp = RightRotation(curr->right);
 			Balancer(temp);
 		}
 		temp = LeftRotation(curr);
