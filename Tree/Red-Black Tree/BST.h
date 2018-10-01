@@ -693,6 +693,7 @@ inline void BinarySearchTree2<T>::BringBalance()
 	}
 	Balancer(root);
 }
+//To update it with a version only with recursion
 template<typename T>
 inline void BinarySearchTree2<T>::Balancer(Node<T>*curr)
 {
@@ -705,10 +706,10 @@ inline void BinarySearchTree2<T>::Balancer(Node<T>*curr)
 	if (GetBalance(curr) > 1)
 	{
 		//left rotation
-		if (GetBalance(curr->left) <= -1)
+		temp = curr->left;
+		while (GetBalance(temp) <= -1)
 		{
 			temp = LeftRotation(curr->left);
-			Balancer(temp);
 		}
 		//left rotation
 		temp = RightRotation(curr);
@@ -718,10 +719,10 @@ inline void BinarySearchTree2<T>::Balancer(Node<T>*curr)
 	else if (GetBalance(curr) < -1)
 	{
 		//right rotation
-		if (GetBalance(curr->right) >= 1)
+		temp = curr->right;
+		while (GetBalance(temp) >= 1)
 		{
 			temp = RightRotation(curr->right);
-			Balancer(temp);
 		}
 		temp = LeftRotation(curr);
 		Balancer(temp);
