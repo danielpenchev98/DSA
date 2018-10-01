@@ -62,7 +62,7 @@ private:
 
 	//help recursive function for balancing the tree
 
-	void Balancer(Node<T>*);
+	//void Balancer(Node<T>*);
 protected:
 	Node<T>* GetRoot() { return root; }
 	void AssignRoot(const Node<T>&A) { root = new Node<T>; root->col = A.col; root->data = A.data; root->key = A.key; root->left = nullptr; root->right = nullptr; root->parent = nullptr; }
@@ -113,7 +113,8 @@ public:
 
 	//Function for balancing the binary search tree
 
-	void BringBalance();
+	//Balancing is non-supported
+	//void BringBalance();
 };
 template<typename T>
 inline BinarySearchTree2<T>::BinarySearchTree2() :size(0)
@@ -675,6 +676,7 @@ inline unsigned int BinarySearchTree2<T>::GetLevel(const Node<T>* const curr, co
 	}
 	return temp1 != 0 ? temp1 : temp2;
 }
+/*
 template<typename T>
 inline int BinarySearchTree2<T>::GetBalance(const Node<T>* const curr) const
 {
@@ -684,6 +686,7 @@ inline int BinarySearchTree2<T>::GetBalance(const Node<T>* const curr) const
 	}
 	return GetHeightOfSubTree(curr->left) - GetHeightOfSubTree(curr->right);
 }
+*/
 template<typename T>
 inline void BinarySearchTree2<T>::BringBalance()
 {
@@ -693,7 +696,7 @@ inline void BinarySearchTree2<T>::BringBalance()
 	}
 	Balancer(root);
 }
-//To update it with a version only with recursion
+/*
 template<typename T>
 inline void BinarySearchTree2<T>::Balancer(Node<T>*curr)
 {
@@ -728,6 +731,7 @@ inline void BinarySearchTree2<T>::Balancer(Node<T>*curr)
 		Balancer(temp);
 	}
 }
+*/
 template<typename T>
 const Node<T>* const BinarySearchTree2<T>::SubTreeMin(const Node<T>* const A) const
 {
