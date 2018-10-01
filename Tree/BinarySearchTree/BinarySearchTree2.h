@@ -57,7 +57,7 @@ private:
 
 	//help recursive function for balancing the tree
 
-	void Balancer(Node<T>*);
+	//void Balancer(Node<T>*);
 
 public:
 	//Big 4
@@ -103,8 +103,8 @@ public:
 	int GetBalance(const Node<T>* const) const;
 
 	//Function for balancing the binary search tree
-
-	void BringBalance();
+        //Balancing is non-supported
+	//void BringBalance();
 };
 template<typename T>
 inline BinarySearchTree2<T>::BinarySearchTree2() :size(0)
@@ -672,6 +672,7 @@ inline int BinarySearchTree2<T>::GetBalance(const Node<T>* const curr) const
 	}
 	return GetHeightOfSubTree(curr->left) - GetHeightOfSubTree(curr->right);
 }
+/*
 template<typename T>
 inline void BinarySearchTree2<T>::BringBalance()
 {
@@ -716,3 +717,4 @@ inline void BinarySearchTree2<T>::Balancer(Node<T>*curr)
 		Balancer(temp);
 	}
 }
+*/
