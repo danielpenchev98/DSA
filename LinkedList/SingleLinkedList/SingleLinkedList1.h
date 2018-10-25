@@ -322,10 +322,12 @@ inline void SingleLinkedList<T, Y>::DeleteNode(const T& DATA, const Y& KEY)
 		Iterator::CheckForInvalid(temp);
 		delete temp;
 	}
+	/*
 	else if (temp == nullptr)
 	{
 		std::cout << "The list is empty." << std::endl;
 	}
+	*/
 	else
 	{
 		while (temp->next != nullptr)
@@ -341,6 +343,7 @@ inline void SingleLinkedList<T, Y>::DeleteNode(const T& DATA, const Y& KEY)
 			}
 			temp = temp->next;
 		}
+		/*
 		if (flag == 0 && temp->data == DATA && temp->key == KEY)
 		{
 			Node<T, Y>* temp1 = temp;
@@ -349,6 +352,8 @@ inline void SingleLinkedList<T, Y>::DeleteNode(const T& DATA, const Y& KEY)
 			delete temp1;
 			flag = 1;
 		}
+		*/
+		//dont know why the hell this was here .Gonna figure it out soon.
 	}
 	if (flag == 0)
 	{
