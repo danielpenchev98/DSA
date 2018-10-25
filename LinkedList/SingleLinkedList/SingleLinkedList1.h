@@ -988,6 +988,7 @@ inline void SingleLinkedList<T, Y>::ChangeKey(const Y&KEY, const Y&NEWKEY)
 	{
 		Start = new Node<T, Y>(Start->data, NEWKEY);
 		Start->next = curr->next;
+		delete curr;
 		return;
 	}
 	Node<T, Y>* par = nullptr;
