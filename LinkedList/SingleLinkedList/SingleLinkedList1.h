@@ -930,7 +930,7 @@ inline void SingleLinkedList<T, Y>::push_back(const T&DATA, const Y&KEY)
 	size++;
 	if (Start == nullptr)
 	{
-		curr = newElement;
+		Start = newElement;
 		return;
 	}
 	Node<T, Y>* temp = Start;
