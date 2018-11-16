@@ -423,7 +423,7 @@ inline T& SingleLinkedList<T, Y>::At(const Y&KEY)
 template<typename T, typename Y>
 inline void SingleLinkedList<T, Y>::Reverse()
 {
-	if (Start->next == nullptr)
+	if (Start->next == nullptr||size<=1)
 	{
 		return;
 	}
