@@ -647,7 +647,7 @@ inline typename SingleLinkedList<T, Y>::Iterator SingleLinkedList<T,Y>::Iterator
 {
 	Iterator temp(*this);
 	temp.advance(adv);
-	return adv;
+	return temp;
 }
 template<typename T,typename Y>
 inline typename SingleLinkedList<T, Y>::Iterator& SingleLinkedList<T, Y>::Iterator::operator+=(const unsigned int adv)
