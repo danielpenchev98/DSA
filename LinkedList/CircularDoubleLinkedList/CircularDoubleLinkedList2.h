@@ -201,7 +201,7 @@ template<typename T, typename Y>
 inline void CircularDoubleLinkedList<T, Y>::AddNode(const T&DATA, const Y&KEY)
 {
 	unsigned int pos = 0;
-	if(At(KEY)==nullptr)
+	if(At(KEY)!=nullptr)
 	{
 		std::cout<<"Error, a node with the same key exists"<<std::endl;
 		return;
