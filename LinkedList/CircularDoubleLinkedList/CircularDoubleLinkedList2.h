@@ -3,6 +3,10 @@
 #include <exception>
 //problem with begin() and end()
 //how to get the keys? - through the iterators
+
+//Problem found with AddNode() - should check first of the key already exist
+
+//Problem with At() - if the key isnt valid ?
 template<typename T, typename Y>
 struct Node
 {
@@ -197,6 +201,11 @@ template<typename T, typename Y>
 inline void CircularDoubleLinkedList<T, Y>::AddNode(const T&DATA, const Y&KEY)
 {
 	unsigned int pos = 0;
+	if(At(KEY)==nullptr)
+	{
+		std::cout<<"Error, a node with the same key exists"<<std::endl;
+		return;
+	}
 	std::cout << "Enter position :";
 	std::cin >> pos;
 	if (pos > size)
@@ -333,15 +342,15 @@ inline int CircularDoubleLinkedList<T, Y>::SearchPosNode(const Node<T, Y>&A) con
 template<typename T, typename Y>
 inline const T& CircularDoubleLinkedList<T, Y>::At(const Y&KEY) const
 {
-	CircularDoubleLinkedList<T, Y>::Iterator iter = begin();
-	for (; iter <= end(); ++iter)
-	{
-		if (iter->key == KEY)
-		{
+	       CircularDoubleLinkedList<T, Y>::Iterator iter = begin();
+	       for (; iter <= end(); ++iter)
+	       {
+		     if (iter->key == KEY)
+		     {
 			return iter->data;
-		}
-	}
-
+		     }
+	       }
+	       return nullptr;
 }
 template<typename T, typename Y>
 inline T& CircularDoubleLinkedList<T, Y>::At(const Y&KEY)
