@@ -220,6 +220,12 @@ inline SingleLinkedList<T, Y>& SingleLinkedList<T, Y>::operator=(const SingleLin
 template<typename T, typename Y>
 inline void SingleLinkedList<T, Y>::AddNode(const T& DATA, const Y& KEY)
 {
+	if(At(KEY)!=nullptr)
+	{
+		std::cout<<"A node with that key already exists"<<std::endl;
+		return;
+	}
+		
 	unsigned int pos = 0;
 	std::cout << "Enter position :";
 	std::cin >> pos;
@@ -414,6 +420,8 @@ inline const T& SingleLinkedList<T, Y>::At(const Y& KEY) const
 			return iter->data;
 		}
 	}
+	//Added when the key isnt valid
+	return nullptr;
 }
 template<typename T, typename Y>
 inline T& SingleLinkedList<T, Y>::At(const Y&KEY)
