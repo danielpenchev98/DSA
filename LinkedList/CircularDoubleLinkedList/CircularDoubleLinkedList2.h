@@ -896,6 +896,7 @@ inline typename CircularDoubleLinkedList<T, Y>::Iterator& CircularDoubleLinkedLi
 	Iterator temp(*this);
 	temp.advance(progress);
 	swap(temp);
+	return *this;
 }
 template<typename T, typename Y>
 inline typename CircularDoubleLinkedList<T, Y>::Iterator CircularDoubleLinkedList<T, Y>::Iterator::operator+(const int progress) const
@@ -910,6 +911,8 @@ inline typename CircularDoubleLinkedList<T, Y>::Iterator& CircularDoubleLinkedLi
 	Iterator temp(*this);
 	temp.advance(-progress);
 	swap(temp);
+	return *this;
+	
 }
 template<typename T, typename Y>
 inline typename CircularDoubleLinkedList<T, Y>::Iterator CircularDoubleLinkedList<T, Y>::Iterator::operator -(const int progress) const
