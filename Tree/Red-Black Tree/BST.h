@@ -477,7 +477,7 @@ inline Node<T>* BinarySearchTree2<T>::LeftRotation(Node<T>* node)
 	node->right = C->left;
 	if (C->left != nullptr)
 	{
-		(C->left)->parent = node->right;
+		(C->left)->parent = node;
 	}
 	C->left = node;
 	node->parent = C;
